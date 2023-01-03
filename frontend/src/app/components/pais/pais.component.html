@@ -1,0 +1,46 @@
+<h2>Input data</h2>
+<div>
+    <form #paisForm="ngForm" (ngSubmit)="addPais(paisForm)">
+        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="selectedPais._id"> 
+        <div>
+            <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="selectedPais.nombre"
+            placeholder="Enter your nombre">
+        </div>
+        <div>
+            <input type="text" name="capital" #capital="ngModel" [(ngModel)]="selectedPais.capital"
+            placeholder="Enter your capital">
+        </div>
+        <div>
+            <input type="text" name="habitantes" #habitantes="ngModel" [(ngModel)]="selectedPais.habitantes"
+            placeholder="Enter your number habitantes">
+        </div>
+        <div>
+            <button>Enviar</button>
+            <button (click)="resetForm(paisForm)">Borrar</button>
+        </div>
+    </form>
+</div>
+
+<div>
+    <table>
+        <thead>
+            <th>icont</th>
+            <th>nombre</th>
+            <th>capital</th>
+            <th>habitantes</th>
+            <th>ajustes</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of paises; index as i">
+                <td>{{ i + 1 }}</td>
+                <td>{{ item.nombre }}</td>
+                <td>{{ item.capital }}</td>
+                <td>{{ item.habitantes }}</td>
+                <td>
+                    <a href="#" (click)="editPais(item)">editar</a>
+                    <a href="#" (click)="deletePais(item)">borrar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
